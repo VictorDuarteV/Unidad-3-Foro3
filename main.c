@@ -41,10 +41,8 @@ void main(void)
     /************************************************
         CONFIGURACION DE GPIO
     ************************************************/
-    GPIO_setPinEntradaconPullUp(PORT1,BUTTON1);                 //PIN P1.4 COMO ENTRADA
+    Gpio_init2021();                                        //Función de inicialización de leds y botones
 
-    GPIO_setPinSalida(PORT2, LEDROJORGB | LEDVERDERGB |LEDAZULRGB);   // CONFIGURA PINES 2.0,2.1,2.2  COMO SALIDA (LEDS RGB)"
-    GPIO_setPinSalida(PORT1, LEDRED);                          // Configura pin 1.0 como salida (Led rojo)"
     GPIO_setPinBajo(PORT2, LEDROJORGB | LEDVERDERGB |LEDAZULRGB);     // LEDS RGB APAGADOS
     GPIO_setPinAlto(PORT1, LEDRED);                            // Led rojo prendido
 
@@ -52,7 +50,7 @@ void main(void)
     while(1)
     {
 
-        if ( Gpio_Pin_in(0x10) != 1)                // ENTRA AL PRESIONAR EL SWITCH DEL PUERTO P1.4 (CUANDO ESTA EN BAJO)
+        if ( Leer_entradas_P2(0x10) != 1)                // ENTRA AL PRESIONAR EL SWITCH DEL PUERTO P1.4 (CUANDO ESTA EN BAJO)
                 {
                 GPIO_setPinBajo(PORT1, LEDRED);  //Apaga led rojo
                     if(bandera == FALSE)
@@ -68,8 +66,8 @@ void main(void)
                                 GPIO_setPinBajo(PORT2, LEDVERDERGB);    //APAGA GREEN
                                 GPIO_setPinAlto(PORT2,LEDAZULRGB);    //ENCIENDE BLUE
                                 for(i=RETARDO; i>0 ;i--);
-                             if ( Gpio_Pin_in(0x10) != 1) bandera=FALSE;    // ENTRA CUANDO PRESIONAMOS BOTON DE P1.4
-                             while( Gpio_Pin_in(0x10) != 1);                //MIENTRAS ESTE PRESIONADO EL BOTON
+                             if ( Leer_entradas_P2(0x10) != 1) bandera=FALSE;    // ENTRA CUANDO PRESIONAMOS BOTON DE P1.4
+                             while( Leer_entradas_P2(0x10) != 1);                //MIENTRAS ESTE PRESIONADO EL BOTON
                             }
                         }
                  GPIO_setPinBajo(PORT2, LEDROJORGB | LEDVERDERGB |PIN2);  //APAGA TODOS

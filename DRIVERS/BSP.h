@@ -52,6 +52,7 @@
 #define LEDVERDERGB GPIO_PIN1
 #define LEDAZULRGB  GPIO_PIN2
 #define BUTTON1     GPIO_PIN4
+#define PIN3        GPIO_PIN3
 
 
 #endif /* BSP_H_ */
