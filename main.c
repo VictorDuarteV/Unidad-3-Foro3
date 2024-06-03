@@ -41,11 +41,8 @@ void main(void)
     /************************************************
         CONFIGURACION DE GPIO
     ************************************************/
-    GPIO_setPinEntradaconPullUp(PORT1,BUTTON1);                 //PIN P1.4 COMO ENTRADA
-    GPIO_setPinEntradaconPullUp(PORT2,PIN3);                 //PIN P2.3 COMO ENTRADA
+    Gpio_init2021();                                        //Función de inicialización de leds y botones
 
-    GPIO_setPinSalida(PORT2, LEDROJORGB | LEDVERDERGB |LEDAZULRGB);   // CONFIGURA PINES 2.0,2.1,2.2  COMO SALIDA (LEDS RGB)"
-    GPIO_setPinSalida(PORT1, LEDRED);                          // Configura pin 1.0 como salida (Led rojo)"
     GPIO_setPinBajo(PORT2, LEDROJORGB | LEDVERDERGB |LEDAZULRGB);     // LEDS RGB APAGADOS
     GPIO_setPinAlto(PORT1, LEDRED);                            // Led rojo prendido
 
